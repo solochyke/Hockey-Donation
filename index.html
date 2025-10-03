@@ -23,14 +23,14 @@
 </head>
 <body class="bg-ice-white text-gray-900 font-sans">
 
-    <section class="relative bg-cover bg-center h-[70vh] flex items-center justify-center" 
+    <section class="relative bg-cover bg-center **h-[60vh] md:h-[70vh]** flex items-center justify-center" 
            style="background-image: url('img/hockey_hero_pic.png');"> 
     <div class="bg-hockey-blue bg-opacity-70 absolute inset-0"></div>
-    <div class="relative z-10 text-center px-6">
-      <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6">
+    <div class="relative z-10 text-center **p-4**"> 
+      <h1 class="text-4xl **sm:text-5xl** md:text-6xl font-extrabold text-white mb-4 **sm:mb-6**"> 
         Help a Young Player Get On the Ice Today
       </h1>
-      <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-8">
+      <p class="text-base **sm:text-lg** md:text-xl text-gray-200 max-w-2xl mx-auto mb-6 **sm:mb-8**">
         The cost of ice time and equipment can stop a great dream cold. Your donation breaks down those barriers, 
         providing skates, pads, sticks, and crucial access to the rink for aspiring players.
       </p>
@@ -41,27 +41,31 @@
     </div>
   </section>
 
-    <section class="py-16 bg-white text-center">
-    <h2 class="text-3xl font-bold mb-10 text-hockey-blue">Your Impact in Numbers</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-4xl mx-auto">
-      <div>
-        <span class="counter text-5xl font-extrabold text-hockey-red" data-type="equipment">480</span>
+<hr>
+
+    <section class="py-12 **sm:py-16** bg-white text-center">
+    <h2 class="text-3xl font-bold mb-8 **sm:mb-10** text-hockey-blue">Your Impact in Numbers</h2>
+    <div class="grid grid-cols-1 **sm:grid-cols-2 lg:grid-cols-3** gap-6 **sm:gap-10** max-w-5xl mx-auto px-4">
+      <div class="p-4 **sm:p-0**">
+        <span class="counter **text-4xl** sm:text-5xl font-extrabold text-hockey-red" data-type="equipment">480</span>
         <p class="mt-2 text-gray-600">Sets of Equipment Funded</p>
       </div>
-      <div>
-        <span class="counter text-5xl font-extrabold text-hockey-red" data-type="hours">9,200</span>
+      <div class="p-4 **sm:p-0**">
+        <span class="counter **text-4xl** sm:text-5xl font-extrabold text-hockey-red" data-type="hours">9,200</span>
         <p class="mt-2 text-gray-600">Hours of Ice Time Provided</p>
       </div>
-      <div>
-        <span class="counter text-5xl font-extrabold text-hockey-red" data-type="players">153</span>
+      <div class="p-4 **sm:p-0** **sm:col-span-2 lg:col-span-1**">
+        <span class="counter **text-4xl** sm:text-5xl font-extrabold text-hockey-red" data-type="players">153</span>
         <p class="mt-2 text-gray-600">Young Players Supported This Year</p>
       </div>
     </div>
   </section>
 
-    <div id="donationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 transition-opacity duration-300">
+<hr>
+
+    <div id="donationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 transition-opacity duration-300 **p-4**">
     <div id="modalBox" 
-         class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 text-center relative transform transition-all duration-300 scale-95 opacity-0 translate-y-6">
+         class="bg-white rounded-xl shadow-lg **max-w-sm sm:max-w-md** w-full p-6 text-center relative transform transition-all duration-300 scale-95 opacity-0 translate-y-6">
 
             <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-black text-2xl">&times;</button>
 
@@ -70,10 +74,10 @@
         <p class="mb-4 text-gray-700">Scan the QR code or copy the wallet address to make your contribution:</p>
 
                 <img src="img/USDT code.png" 
-             alt="Crypto Wallet QR" class="mx-auto mb-4">
+             alt="Crypto Wallet QR" class="mx-auto mb-4 **w-40 h-40**"> 
 
                 <div class="bg-gray-100 p-3 rounded-lg mb-4 break-words">
-          <code id="walletAddress" class="text-gray-800">0x05416397a94EAf881fb6D46b75B6aD834a608a5C</code>
+          <code id="walletAddress" class="text-gray-800 **text-sm**">0x05416397a94EAf881fb6D46b75B6aD834a608a5C</code>
         </div>
 
         <button id="copyBtn" 
@@ -83,8 +87,8 @@
       </div>
 
             <div id="thankYouContent" class="hidden">
-        <img src="img/hockey_player_smiling.jpg" // Placeholder for an uplifting hockey image
-             alt="Young hockey player smiling" class="rounded-lg shadow-md mb-4 w-full h-48 object-cover">
+        <img src="img/hockey_player_smiling.jpg" 
+             alt="Young hockey player smiling" class="rounded-lg shadow-md mb-4 w-full **h-40** object-cover"> 
         <h3 class="text-2xl font-bold mb-4 text-hockey-blue">Goal! Thank You! 🥅</h3>
         <p class="mb-6 text-gray-700">
           Your generosity just got a young player closer to the rink. Every donation makes a vital difference in keeping dreams alive on the ice.
@@ -98,7 +102,7 @@
   </div>
 
   <script>
-    // Donation bump logic (updated for hockey stats)
+    // JavaScript remains the same as it is not a layout issue
     function donationBump() {
       const counters = document.querySelectorAll('.counter');
       counters.forEach(counter => {
@@ -106,14 +110,11 @@
         let bump = 0;
 
         if (counter.dataset.type === "equipment") {
-          // Equipment sets are a larger, less frequent bump
-          bump = Math.random() < 0.3 ? 1 : 0; // 30% chance for a set of equipment to be funded
+          bump = Math.random() < 0.3 ? 1 : 0;
         } else if (counter.dataset.type === "hours") {
-          // Ice hours are a more frequent, smaller bump
           bump = Math.floor(Math.random() * 20) + 10;
         } else if (counter.dataset.type === "players") {
-          // Players supported is a smaller, less frequent bump
-          bump = Math.random() < 0.15 ? 1 : 0; // 15% chance a new player is supported
+          bump = Math.random() < 0.15 ? 1 : 0;
         }
 
         current += bump;
@@ -122,7 +123,7 @@
       });
     }
 
-    // MODAL LOGIC (KEPT THE SAME, but added confetti color for team spirit)
+    // Modal logic
     const modal = document.getElementById("donationModal");
     const modalBox = document.getElementById("modalBox");
     const donateBtn = document.getElementById("donateBtn");
